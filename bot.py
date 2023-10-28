@@ -144,7 +144,8 @@ async def handle_has_premium_input(message: types.Message, state: FSMContext):
     sqlite_db.set_subscription_status(user_id, is_subscribed)
     sqlite_db.set_premium_status(user_id, has_premium)
 
-    await message.answer(f"User {user_id} details updated!")
+    await message.reply(f"User {user_id} details updated!",
+                        reply_markup=get_start_kb(message.from_user.id))
     await state.finish()
 
 @dp.message_handler(lambda message: message.text not in ["0", "1"], state=UserEditStatesGroup.has_premium)
@@ -207,7 +208,7 @@ async def handle_category(message: types.Message, state: FSMContext) -> None:
 
     await state.set_data(data)
     await message.reply(f"Product '{data['title']}' with ID {product_id} added to the database in '{data['category']}' category.",
-                        reply_markup=get_start_kb())
+                        reply_markup=get_start_kb(message.from_user.id))
     await state.finish()
 
 
@@ -247,7 +248,7 @@ async def handle_edit_title(message: types.Message, state: FSMContext) -> None:
         await sqlite_db.edit_product(data['product_id'], message.text)
 
     await message.reply('Product edited successfully',
-                        reply_markup=get_start_kb())
+                        reply_markup=get_start_kb(message.from_user.id))
     await state.finish()
 
 
