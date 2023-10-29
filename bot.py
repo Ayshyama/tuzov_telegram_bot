@@ -11,7 +11,6 @@ API_TOKEN = '6789479098:AAGDJRFWirWgpu24pi6C0RK_9Hr7f3G_oLM'
 
 ADMIN_IDS = {318488850, 101343916}
 
-
 bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
@@ -144,14 +143,17 @@ async def handle_has_premium_input(message: types.Message, state: FSMContext):
     sqlite_db.set_subscription_status(user_id, is_subscribed)
     sqlite_db.set_premium_status(user_id, has_premium)
 
+    if has_premium == 1:
+        await bot.send_message(user_id, "Оплата перевірена, ви отримали доступ до Преміум рамок!")
+
     await message.reply(f"User {user_id} details updated!",
                         reply_markup=get_start_kb(message.from_user.id))
     await state.finish()
 
+
 @dp.message_handler(lambda message: message.text not in ["0", "1"], state=UserEditStatesGroup.has_premium)
 async def handle_invalid_has_premium_input(message: types.Message):
     await message.answer('Invalid input. Please enter 0 or 1 for has_premium:')
-
 
 
 @dp.callback_query_handler(text='get_all_products')
@@ -263,13 +265,13 @@ async def handle_free_products(message: types.Message):
         ])
 
         await bot.send_message(user_id,
-                               "Please subscribe to our social network using the links below:\n\n[Link1](http://example.com)\n[Link2](http://example.com)",
+                               "Підпишись на наші соціальні мережи:\n\n[Link1](http://example.com)\n[Link2](http://example.com)",
                                reply_markup=ikb)
     else:
         # Display the free products to the user
         free_products = sqlite_db.get_products_by_category("free")
         ikb = get_products_list_ikb(free_products)
-        await bot.send_message(user_id, "Choose a product:", reply_markup=ikb)
+        await bot.send_message(user_id, "Оберіть рамку:", reply_markup=ikb)
 
 
 @dp.callback_query_handler(products_list_cb.filter())
@@ -290,26 +292,38 @@ async def user_subscribed(callback: types.CallbackQuery):
 
     sqlite_db.set_user_subscribed(user_id)
 
-    await callback.answer("Thank you for subscribing!")
-    await bot.send_message(user_id, "Thank you for subscribing! Now you can access the free products.")
+    await callback.answer("Дякуємо за підписку!")
+    await bot.send_message(user_id, "Дякуємо за підписку! Тепер у вас є доступ до безкоштовних рамок")
 
 
-@dp.message_handler(lambda message: message.text == 'Paid Products')
+@dp.message_handler(lambda message: message.text == 'Преміум Рамки')
 async def handle_paid_products(message: types.Message):
     user_id = message.from_user.id
     _, has_premium = sqlite_db.get_user_status(user_id)
 
     if not has_premium:
         # Send an offer message for premium
-        await bot.send_message(user_id, "Looks like you don't have premium access. Would you like to upgrade? Click the button below to pay.")
-        # Here you can add a payment button that integrates with a payment gateway.
-        # Upon successful payment, you can update the user's status in the database.
+        await bot.send_message(user_id,
+                               "Щоб отримати доступ до преміум оплатіть 50 грн на карту 1234 5678 9012 3456. Після оплати натисніть кнопку 'Я оплатив'",
+                               reply_markup=get_payment_keyboard())
     else:
-        # Display the premium products to the user
         paid_products = sqlite_db.get_products_by_category("paid")
         ikb = get_products_list_ikb(paid_products)
-        await bot.send_message(user_id, "Choose a premium product:", reply_markup=ikb)
+        await bot.send_message(user_id, "Оберіть преміум рамку:", reply_markup=ikb)
 
+
+@dp.callback_query_handler(text='user_paid')
+async def user_paid(callback: types.CallbackQuery):
+    user_id = callback.from_user.id
+    user_info = callback.from_user
+
+    await bot.delete_message(chat_id=user_id, message_id=callback.message.message_id)
+
+    for admin_id in ADMIN_IDS:
+        await bot.send_message(admin_id,
+                               f"Користувач {user_info.first_name} (ID: {user_id}, Username: @{user_info.username}) нажав кнопку 'Я оплатив'!")
+
+    await bot.send_message(user_id, "Дякуємо! Ваша оплата буде перевірена найближчим часом. Ви отримаєте повідомлення про активацію преміум доступу.")
 
 
 if __name__ == '__main__':

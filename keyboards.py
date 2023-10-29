@@ -31,8 +31,8 @@ def get_start_kb(user_id: int) -> ReplyKeyboardMarkup:
         buttons.append([KeyboardButton('/products'), KeyboardButton('/users')])
 
     buttons.extend([
-        [KeyboardButton('Free Products')],
-        [KeyboardButton('Paid Products')]
+        [KeyboardButton('Безкоштовні Рамки')],
+        [KeyboardButton('Преміум Рамки')]
     ])
 
     kb = ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
@@ -67,3 +67,15 @@ def get_users_ikb() -> InlineKeyboardMarkup:
         [InlineKeyboardButton('Edit User by ID', callback_data=users_cb.new(action='edit'))]
     ], resize_keyboard=True)
     return ikb
+
+
+def create_payment_button(payment_link):
+    ikb = InlineKeyboardMarkup()
+    ikb.add(InlineKeyboardButton(text="Придбати Преміум", url=payment_link))
+    return ikb
+
+
+def get_payment_keyboard():
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton('Я оплатив', callback_data='user_paid')]
+    ])
