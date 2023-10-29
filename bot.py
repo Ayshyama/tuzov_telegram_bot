@@ -265,7 +265,7 @@ async def handle_free_products(message: types.Message):
 
     if not is_subscribed:
         ikb = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton('Subscribed', callback_data='user_subscribed')]
+            [InlineKeyboardButton('Я підписався', callback_data='user_subscribed')]
         ])
 
         await bot.send_message(user_id,
