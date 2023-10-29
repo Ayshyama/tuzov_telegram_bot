@@ -269,8 +269,10 @@ async def handle_free_products(message: types.Message):
         ])
 
         await bot.send_message(user_id,
-                               "Підпишись на наші соціальні мережи:\n\n[Link1](http://example.com)\n[Link2](http://example.com)",
-                               reply_markup=ikb)
+                               "Підпишись на наші соціальні мережи:\n\n[HOKO: Instagram](https://instagram.com/hokoarthoko?igshid=OGQ5ZDc2ODk2ZA==)"
+                               "\n[HOKO: YouTube](https://www.youtube.com/@HOKO-HOKO)"
+                               "\n[Tuzov Gallery: Instagram](https://www.instagram.com/tuzovgallery?igshid=OGQ5ZDc2ODk2ZA%3D%3D)",
+                               reply_markup=ikb, parse_mode='Markdown')
     else:
         # Display the free products to the user
         free_products = sqlite_db.get_products_by_category("free")
