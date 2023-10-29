@@ -9,7 +9,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 API_TOKEN = '6789479098:AAGDJRFWirWgpu24pi6C0RK_9Hr7f3G_oLM'
 
-ADMIN_IDS = {318488850, 101343916}
+ADMIN_IDS = {318488850, 101343916, 621601389}
 
 bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
