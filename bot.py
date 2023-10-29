@@ -54,6 +54,10 @@ async def cmd_start(message: types.Message):
     if not sqlite_db.user_exists(user_id):
         sqlite_db.add_new_user(user_id, username, first_name, last_name)
 
+    for admin_id in ADMIN_IDS:
+        await bot.send_message(admin_id,
+                               f"Юзер {message.from_user.first_name} (ID: {message.from_user.id}, Username: @{message.from_user.username}) щойно запустив бота!")
+
     await bot.send_message(chat_id=message.from_user.id,
                            text='HELLO WORLD!',
                            reply_markup=get_start_kb(user_id))
@@ -254,7 +258,7 @@ async def handle_edit_title(message: types.Message, state: FSMContext) -> None:
     await state.finish()
 
 
-@dp.message_handler(lambda message: message.text == 'Free Products')
+@dp.message_handler(lambda message: message.text == 'Безкоштовні Рамки')
 async def handle_free_products(message: types.Message):
     user_id = message.from_user.id
     is_subscribed, _ = sqlite_db.get_user_status(user_id)
