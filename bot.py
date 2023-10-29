@@ -299,7 +299,10 @@ async def user_subscribed(callback: types.CallbackQuery):
     sqlite_db.set_user_subscribed(user_id)
 
     await callback.answer("Дякуємо за підписку!")
-    await bot.send_message(user_id, "Дякуємо за підписку! Тепер у вас є доступ до безкоштовних рамок")
+    await bot.send_message(user_id, "Дякуємо за підписку! Тепер у вас є доступ до безкоштовних рамок.")
+    free_products = sqlite_db.get_products_by_category("free")
+    ikb = get_products_list_ikb(free_products)
+    await bot.send_message(user_id, "Оберіть рамку:", reply_markup=ikb)
 
 
 @dp.message_handler(lambda message: message.text == 'Преміум Рамки')
