@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0da60cd-1b5d-400a-a09c-91983a526cbe" name="Changes" comment="" />
+    <list default="true" id="d0da60cd-1b5d-400a-a09c-91983a526cbe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +39,7 @@
     "WebServerToolWindowFactoryState": "false",
     "database.data.extractors.current.export.id": "Markdown-Groovy.md.groovy",
     "database.data.extractors.current.id": "Markdown-Groovy.md.groovy",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/user/Desktop/Projects/13_TELEGRAM_HALLOWEN_BOT",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -201,6 +204,7 @@
       <workItem from="1698400132367" duration="26373000" />
       <workItem from="1698505687853" duration="19916000" />
       <workItem from="1698566008798" duration="12286000" />
+      <workItem from="1698694398104" duration="972000" />
     </task>
     <servers />
   </component>

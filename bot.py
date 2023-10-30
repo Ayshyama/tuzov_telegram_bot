@@ -269,7 +269,7 @@ async def handle_free_products(message: types.Message):
         ])
 
         await bot.send_message(user_id,
-                               "Підпишись на наші соціальні мережи:\n\n[HOKO: Instagram](https://instagram.com/hokoarthoko?igshid=OGQ5ZDc2ODk2ZA==)"
+                               "Підпишись на наші соціальні мережі:\n\n[HOKO: Instagram](https://instagram.com/hokoarthoko?igshid=OGQ5ZDc2ODk2ZA==)"
                                "\n[HOKO: YouTube](https://www.youtube.com/@HOKO-HOKO)"
                                "\n[Tuzov Gallery: Instagram](https://www.instagram.com/tuzovgallery?igshid=OGQ5ZDc2ODk2ZA%3D%3D)",
                                reply_markup=ikb, parse_mode='Markdown')
@@ -313,7 +313,12 @@ async def handle_paid_products(message: types.Message):
     if not has_premium:
         # Send an offer message for premium
         await bot.send_message(user_id,
-                               "Щоб отримати доступ до преміум оплатіть 50 грн на карту 1234 5678 9012 3456. Після оплати натисніть кнопку 'Я оплатив'",
+                               "[Щоб отримати доступ до преміум оплатіть 50 грн за посиланням.](https://send.monobank.ua/jar/8FEHQVN8Cz) Після оплати натисніть кнопку 'Я оплатив'"
+                               "\n\nПідпишись на наші соціальні мережі:\n"
+                               "\n[HOKO: Instagram](https://instagram.com/hokoarthoko?igshid=OGQ5ZDc2ODk2ZA==)"
+                               "\n[HOKO: YouTube](https://www.youtube.com/@HOKO-HOKO)"
+                               "\n[Tuzov Gallery: Instagram](https://www.instagram.com/tuzovgallery?igshid=OGQ5ZDc2ODk2ZA%3D%3D)",
+                               parse_mode='Markdown',
                                reply_markup=get_payment_keyboard())
     else:
         paid_products = sqlite_db.get_products_by_category("paid")
