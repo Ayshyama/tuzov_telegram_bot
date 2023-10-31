@@ -314,10 +314,10 @@ async def handle_paid_products(message: types.Message):
         # Send an offer message for premium
         await bot.send_message(user_id,
                                "[Щоб отримати доступ до преміум оплатіть 50 грн за посиланням.](https://send.monobank.ua/jar/8FEHQVN8Cz) Після оплати натисніть кнопку 'Я оплатив'"
-                               "\n\nПідпишись на наші соціальні мережі:\n"
+                               "\n\nПідпишись на наші соціальні мережі:"
                                "\n[HOKO: Instagram](https://instagram.com/hokoarthoko?igshid=OGQ5ZDc2ODk2ZA==)"
                                "\n[HOKO: YouTube](https://www.youtube.com/@HOKO-HOKO)"
-                               "\n[Tuzov Gallery: Instagram](https://www.instagram.com/tuzovgallery?igshid=OGQ5ZDc2ODk2ZA%3D%3D)",
+                               "\n[Tuzov Gallery: Instagram](https://www.instagram.com/tuzovgallery?igshid=OGQ5ZDc2ODk2ZA%3D%3D)\n",
                                parse_mode='Markdown',
                                reply_markup=get_payment_keyboard())
     else:
