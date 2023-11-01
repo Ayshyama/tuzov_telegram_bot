@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "/root/tuzov_telegram_bot/bot.py", line 1, in <module>
+    from aiogram import types, executor, Dispatcher, Bot
+ModuleNotFoundError: No module named 'aiogram'
+Traceback (most recent call last):
+  File "/root/tuzov_telegram_bot/bot.py", line 1, in <module>
+    from aiogram import types, executor, Dispatcher, Bot
+ModuleNotFoundError: No module named 'aiogram'
+Updates were skipped successfully.
+Updates were skipped successfully.
+Traceback (most recent call last):
+  File "/root/tuzov_telegram_bot/bot.py", line 1, in <module>
+    from aiogram import types, executor, Dispatcher, Bot
+ModuleNotFoundError: No module named 'aiogram'
+Updates were skipped successfully.
+Updates were skipped successfully.
+Updates were skipped successfully.
+Updates were skipped successfully.
+Updates were skipped successfully.
+Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 359, in start_polling
+    updates = await self.bot.get_updates(limit=limit, offset=offset, timeout=timeout)
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 97, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 128, in check_result
+    raise exceptions.TelegramAPIError(description)
+aiogram.utils.exceptions.TelegramAPIError: Bad Gateway
+Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 359, in start_polling
+    updates = await self.bot.get_updates(limit=limit, offset=offset, timeout=timeout)
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 97, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 128, in check_result
+    raise exceptions.TelegramAPIError(description)
+aiogram.utils.exceptions.TelegramAPIError: Bad Gateway
+Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 359, in start_polling
+    updates = await self.bot.get_updates(limit=limit, offset=offset, timeout=timeout)
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/bot.py", line 97, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "/root/tuzov_telegram_bot/venv/lib/python3.10/site-packages/aiogram/bot/api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 5 seconds.
+Updates were skipped successfully.
